@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import HeaderTab from "./components/HeaderTab";
+import HeaderUtil from "./components/HeaderUtil";
+import MainContent from "./components/MainContent";
+import GlobalStyles from "./GlobalStyles";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import KartUser from "./components/User/KartUser";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <GlobalStyles />
+      <HeaderUtil />
+      <HeaderTab />
+      <Routes>
+        <Route exact path="/" component={MainContent} />
+        <Route exact path="/kart/user" element={<KartUser />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
 export default App;
